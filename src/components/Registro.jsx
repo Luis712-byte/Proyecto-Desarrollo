@@ -66,7 +66,7 @@ function RegistroForm() {
         </table>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline w-full mt-4"
+          className="bg-primary text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline w-full mt-4"
         >
           Registrarse
         </button>

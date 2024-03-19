@@ -16,7 +16,7 @@ const Card = ({ imgSrc, title, paragraph, buttonLabel }) => {
       />
       <h1>{title}</h1>
       <p>{paragraph}</p>
-      <button className="button-style" onClick={handleProductos}>{buttonLabel}</button>
+      <button className="btn btn-primary" onClick={handleProductos}>{buttonLabel}</button>
     </div>
  );
 };

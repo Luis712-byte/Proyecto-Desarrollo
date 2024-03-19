@@ -7,6 +7,7 @@ import { FiltersProvider } from './context/filters.jsx';
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+import 'bootswatch/dist/sandstone/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

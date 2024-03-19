@@ -25,7 +25,7 @@ export function Products({ products }) {
               <div className="mt-2">
                 <button
                   className={`${
-                    isProductInCart ? 'bg-red-500' : 'bg-blue-500'
+                    isProductInCart ? 'bg-danger' : 'bg-primary'
                   } text-white py-2 px-4 rounded`}
                   onClick={() => {
                     isProductInCart ? removeFromCart(product) : addToCart(product);

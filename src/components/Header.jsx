@@ -24,7 +24,7 @@ export function NavBar() {
   return (
     <div className="header">
       <div className="header-part1">
-        <Navbar variant="dark" expand="lg">
+        <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
             <p className="m-0">Welcome to FashionCode</p>
             <Nav className="me-auto"></Nav>
@@ -40,9 +40,9 @@ export function NavBar() {
               />
             </Nav>
             <div className="responsive-div">
-              <p>
+              <h5>
                 ¡Hola! <br></br> Inicia sesión o regístrate
-              </p>
+              </h5>
             </div>
           </Container>
         </Navbar>
@@ -61,19 +61,17 @@ export function NavBar() {
               />
             </Navbar.Brand>
             <Nav className="ms-auto">
-              <Nav.Link onClick={handleProductos}>CATEGORIAS</Nav.Link>
+              <Nav.Link onClick={handleProductos}>CATEGORIAS </Nav.Link>
             </Nav>
             <FontAwesomeIcon
               icon={faCartShopping}
               onClick={handleCarrito}
-              className="cart-icon"
+              className="cart-icon bg-dark"
               style={{
                 fontSize: "24px",
-                border: "2px solid #000",
                 borderRadius: "50px",
-                backgroundColor: "#000",
                 color:"#EEE",
-                padding:"0 20px 0 20px",
+                padding:"5px",
                 cursor: "pointer",
               }}
             />

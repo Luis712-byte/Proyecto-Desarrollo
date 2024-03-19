@@ -56,9 +56,9 @@ const Home = () => {
           />
         </div>
 
-        <div className="Home-Promo">
-        <p>Compra en linea por catálogo.</p>
-        <p>Obten un 25% por compras superiores a $300.000 | Acumula puntos y gana premios por tus ventas.</p>
+        <div className="Home-Promo bg-dark text-white">
+        <h1>Compra en linea por catálogo.</h1>
+        <h5>Obten un 25% por compras superiores a $300.000 | Acumula puntos y gana premios por tus ventas.</h5>
         </div>
         <br></br>
         <img
