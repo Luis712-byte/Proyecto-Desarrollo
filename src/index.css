@@ -88,6 +88,14 @@ code {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
+@media (max-width: 768px) {
+  .cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 
 .confirm-cart {
   display: grid;
@@ -105,7 +113,6 @@ code {
   cursor: pointer;
   background-color: red;
   align-items: center;
-
   color: #fff;
 }
 .confirm {
@@ -116,22 +123,20 @@ code {
   background-color: #0074d9;
   color: #fff;
 }
-.cart {
+.cart-item {
   width: 100%;
   max-width: 400px;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin: 20px;
 }
-
-.cart button {
+.cart-item button {
   margin: 10px 0;
   padding: 5px 10px;
   font-size: 14px;
   cursor: pointer;
-  background-color: #0074d9;
-  color: #fff;
 }
+
 .products {
   margin-top: 20px;
   width: 100%;
@@ -1071,5 +1076,17 @@ h6 span {
 @media (max-width: 600px) {
   button {
     margin-bottom: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .cart-container {
+    margin-top: 20px; /* Espacio entre el título y los elementos del carrito */
+  }
+  .cart-item {
+    display: block;
+  }
+  .confirm-cart {
+    display: block;
+    margin-top: 20px; /* Espacio entre los elementos del carrito y los botones de confirmación */
   }
 }

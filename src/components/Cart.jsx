@@ -10,16 +10,20 @@ function CartItem({ product, addToCart, removeFromCart }) {
   };
 
   return (
-    <div className="cart">
+    <div className="cart-products">
       <div className="cart-info">
         <img src={product.image} alt={product.title} />
         <h3>{product.title}</h3>
         <p>Talla: {product.size}</p>
         <p>Precio: ${product.price}</p>
         <small>Cantidad: {product.quantity}</small>
-        <button onClick={() => addToCart(product)}>+</button>
+        <button className="btn btn-primary" onClick={() => addToCart(product)}>
+          +
+        </button>
       </div>
-      <button onClick={handleRemoveFromCart}>Eliminar Producto</button>
+      <button className="btn btn-primary" onClick={handleRemoveFromCart}>
+        Eliminar Producto
+      </button>
     </div>
   );
 }
@@ -41,34 +45,36 @@ export function Cart() {
       alert("No hay productos en el carrito de compra.");
     }
   };
-  
 
   return (
     <Container>
       <h1 className="text-center">PRODUCTOS DEL CARRITO</h1>
       <div className="cart-container">
         {cart.map((product) => (
+          <div className="cart-item mb-3" key={product.id}>
           <CartItem
-            key={product.id}
             product={product}
             addToCart={() => addToCart(product)}
             removeFromCart={removeFromCart}
           />
+        </div>
+        
         ))}
       </div>
-      <div class="container text-center">
-        <div class="confirm-cart bg-dark text-white">
-          <div class="total-items">
+
+      <div className="container text-center">
+        <div className="confirm-cart bg-dark text-white">
+          <div className="total-items">
             Items: {totalItems}
-            <div class="total">Total: ${total}</div>
+            <div className="total">Total: ${total}</div>
           </div>
           <div className="buttom-confirm">
-            <button class="btn btn-primary" onClick={handleConfirmCart}>
+            <button className="btn btn-primary" onClick={handleConfirmCart}>
               Confirmar Compra
             </button>
           </div>
           <div className="buttom-clear">
-            <button class="btn btn-danger" onClick={clearCart}>
+            <button className="btn btn-danger" onClick={clearCart}>
               <ClearCartIcon />
             </button>
           </div>
