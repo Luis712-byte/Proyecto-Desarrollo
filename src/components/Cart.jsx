@@ -40,7 +40,12 @@ export function Cart() {
 
   const handleConfirmCart = () => {
     if (cart.length > 0) {
-      navigate("/Pago");
+      const isAuthenticated = !!localStorage.getItem("userDataList");
+      if (isAuthenticated) {
+        navigate("/Pago");
+      } else {
+        navigate("/Login");
+      }
     } else {
       alert("No hay productos en el carrito de compra.");
     }
@@ -52,13 +57,12 @@ export function Cart() {
       <div className="cart-container">
         {cart.map((product) => (
           <div className="cart-item mb-3" key={product.id}>
-          <CartItem
-            product={product}
-            addToCart={() => addToCart(product)}
-            removeFromCart={removeFromCart}
-          />
-        </div>
-        
+            <CartItem
+              product={product}
+              addToCart={() => addToCart(product)}
+              removeFromCart={removeFromCart}
+            />
+          </div>
         ))}
       </div>
 
