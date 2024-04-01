@@ -5,21 +5,22 @@ import Login from "./components/Login";
 import Contacto from "./components/Contacto";
 import Blog from "./components/blog";
 import Carrito from "./components/Carrito";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PaymentGateway from "./components/PaymentGateway";
+import Pay from "./components/Pay";
 
 function App() {
   return (
-<Routes>
-  <Route path="*" element={<Home />} />
-  <Route path="/Producto" element={<Productos />} />
-  <Route path="/Login" element={<Login />} />
-  <Route path="/Contacto" element={<Contacto />} />
-  <Route path="/Blog" element={<Blog />} />
-  <Route path="/Carrito" element={<Carrito/>} />
-  <Route path="/Pago" element={<PaymentGateway/>} />
-</Routes>
-
+    <Routes>
+      <Route path="*" element={<Home />} />
+      <Route path="/Producto" element={<Productos />} />
+      <Route path="/Login" element={<Login />} />
+      <Route path="/Contacto" element={<Contacto />} />
+      <Route path="/Blog" element={<Blog />} />
+      <Route path="/Carrito" element={<Carrito />} />
+      <Route path="/Pago" element={<PaymentGateway />} />
+      <Route path="/Pay" element={<Pay />} />
+    </Routes>
   );
 }
 

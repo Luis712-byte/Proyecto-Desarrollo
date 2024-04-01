@@ -1,25 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
-import PaymentGateway from './Pay';
-import { CartProvider } from '../context/cart';
+import React from "react";
+import { Link } from "react-router-dom";
+import ContactInformation from "./ContactInformation";
+import { CartProvider } from "../context/cart";
+import { CartIcon } from "./Icons";
 
-import { CartIcon } from './Icons';
 function PaymentGatewayView() {
   return (
-    <div className='titulo-pasarela'>
-      <div className='Title-container'>
-
-        
-      <Link to='/Carrito'>
-          <button>  <CartIcon /></button>
+    <div className="titulo-pasarela">
+      <div className="Title-container">
+        <Link to="/Carrito">
+          <button>
+            {" "}
+            <CartIcon />
+          </button>
         </Link>
-        
-        <div className='element2'>
-        <h1>Pasarela de Pago</h1>
-        </div>
       </div>
       <CartProvider>
-        <PaymentGateway />
+        <ContactInformation />
       </CartProvider>
     </div>
   );

@@ -336,25 +336,20 @@ h6 span {
 .full-height {
   min-height: 100vh;
 }
-[type="checkbox"]:checked,
-[type="checkbox"]:not(:checked) {
-  display: none;
-}
-.checkbox:checked + label,
-.checkbox:not(:checked) + label {
+.reg-log{
   position: relative;
   display: block;
+  padding: 20px;
   text-align: center;
   width: 60px;
-  height: 16px;
+  height: auto;
   border-radius: 8px;
   padding: 0;
   margin: 10px auto;
   cursor: pointer;
   background-color: #ffeba7;
 }
-.checkbox:checked + label:before,
-.checkbox:not(:checked) + label:before {
+.reg-log :before {
   position: absolute;
   display: block;
   width: 36px;
@@ -372,7 +367,7 @@ h6 span {
   font-size: 24px;
   transition: all 0.5s ease;
 }
-.checkbox:checked + label:before {
+.reg-log:before {
   transform: translateX(44px) rotate(-270deg);
 }
 .card-3d-wrap {
@@ -1069,8 +1064,8 @@ h6 span {
   margin: 20px;
 }
 
-.element2 {
-  flex-grow: 1;
+.text-Pasarela {
+  flex-grow: 40;
   text-align: center;
 }
 @media (max-width: 600px) {

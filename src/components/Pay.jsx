@@ -1,142 +1,88 @@
-import React, { useState } from 'react';
-import { useCart } from '../hooks/useCart';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Form, Button, Container, Col } from "react-bootstrap";
+import { CartIcon } from "./Icons";
+import { Link, useNavigate } from "react-router-dom";
 
 function PaymentGateway() {
-  const { cart } = useCart();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [region, setRegion] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [country, setCountry] = useState('');
-  const [cardNumber, setCardNumber] = useState('');
-  const [expirationDate, setExpirationDate] = useState('');
-  const [securityCode, setSecurityCode] = useState('');
+  const [cardNumber, setCardNumber] = useState("");
+  const [expirationDate, setExpirationDate] = useState("");
+  const [securityCode, setSecurityCode] = useState("");
   const [submitForm, setSubmitForm] = useState(false);
+  const [validationError, setValidationError] = useState("");
 
-  const total = cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
+
+  const navigate = useNavigate();
+
 
   const handlePayment = () => {
-    setSubmitForm(true);
+    const isValid = validateCardData();
+    if (isValid) {
+      setSubmitForm(true);
+      alert("Compra Exitosa");
+      navigate("/")
+    } else {
+      setValidationError("Por favor ingrese datos válidos.");
+    }
+  };
 
-    setTimeout(() => {
-      setSubmitForm(false);
-      // Implement your logic to process the payment and send data here
-    }, 1500);
+  const validateCardData = () => {
+    return (
+      cardNumber.trim().length === 16 &&
+      expirationDate.trim().length === 5 &&
+      securityCode.trim().length === 3
+    );
+  };
+
+  const handleCardNumberChange = (e) => {
+    const value = e.target.value.replace(/\D/, "");
+    if (value.length <= 16) {
+      setCardNumber(value);
+    }
+  };
+
+  const handleExpirationDateChange = (e) => {
+    const value = e.target.value.replace(/\D/, "");
+    if (value.length <= 5) {
+      setExpirationDate(value);
+    }
+  };
+
+  const handleSecurityCodeChange = (e) => {
+    const value = e.target.value.replace(/\D/, "");
+    if (value.length <= 3) {
+      setSecurityCode(value);
+    }
   };
 
   return (
-    <div>
-      <div id="stars"></div>
-      <div id="stars2"></div>
-      <div id="stars3"></div>
-     
-      <div className="section">
-      
-        <div className="container">
-        
+    <>
+      <div className="Title-container">
+        <Link to="/Pago">
+          <button>
+            {" "}
+            <CartIcon />
+          </button>
+        </Link>
+      </div>
+      <div>
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+
+        <Container>
           <div className="row full-height justify-content-center">
             <div className="col-12 text-center align-self-center py-5">
               <div className="section pb-5 pt-5 pt-sm-2 text-center">
-              <div className="container">
-      <Col>
-       
-          <h2>Detalles de la Compra</h2>
-          <ul>
-            {cart.map((product) => (
-              <li key={product.id}>
-                {product.title} - ${product.price} x {product.quantity}
-              </li>
-            ))}
-          </ul>
-          <p>Total: ${total}</p>
-        </Col>
-        </div>
-        <hr></hr>
-                <h6 className="mb-0 pb-3"><span>Datos</span><span>Pago</span></h6>
-                <input className="checkbox" type="checkbox" id="reg-log" name="reg-log" />
-                <label for="reg-log"></label>
+                <Col>
+                  <h1>Pasarela de Pago</h1>
+                </Col>
+                <hr></hr>
                 <div className="card-3d-wrap mx-auto">
-                
                   <div className="card-3d-wrapper">
                     <div className="card-front">
                       <div className="center-wrap">
                         <div className="section text-center">
-                          <h4 className="mb-4 pb-3">Informacion de contacto</h4>
-                          <Form>
-                            <Form.Group>
-                              <Form.Label></Form.Label>
-                              <Form.Control
-                                type="text"
-                                placeholder="Nombre"
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
-                              />
-                            </Form.Group>
-                            <Form.Group>
-                              <Form.Label></Form.Label>
-                              <Form.Control
-                                type="text"
-                                placeholder="Apellido"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                              />
-                            </Form.Group>
-                            <Form.Group>
-                              <Form.Label></Form.Label>
-                              <Form.Control
-                                type="text"
-                                placeholder="Dirrecion"
-                                value={address}
-                                onChange={(e) => setAddress(e.target.value)}
-                              />
-                            </Form.Group>
-                            <Form.Group>
-                              <Form.Label></Form.Label>
-                              <Form.Control
-                                type="text"
-                                placeholder="Ciudad"
-                                value={city}
-                                onChange={(e) => setCity(e.target.value)}
-                              />
-                            </Form.Group>
-                            <Form.Group>
-                              <Form.Label></Form.Label>
-                              <Form.Control
-                                type="text"
-                                placeholder="Region"
-                                value={region}
-                                onChange={(e) => setRegion(e.target.value)}
-                              />
-                            </Form.Group>
-                            <Form.Group>
-                              <Form.Label></Form.Label>
-                              <Form.Control
-                                type="text"
-                                placeholder="Codigo Postal"
-                                value={postalCode}
-                                onChange={(e) => setPostalCode(e.target.value)}
-                              />
-                            </Form.Group>
-                            <Form.Group>
-                              <Form.Label></Form.Label>
-                              <Form.Control
-                                type="text"
-                                placeholder="Pais"
-                                value={country}
-                                onChange={(e) => setCountry(e.target.value)}
-                              />
-                            </Form.Group>
-                          </Form>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="card-back">
-                      <div className="center-wrap">
-                        <div className="section text-center">
-                          <h4 className="mb-4 pb-3">Pago</h4>
+                          <h4 className="mb-2 pb-3">Informacion de Pago</h4>
                           <Form>
                             <Form.Group>
                               <Form.Label></Form.Label>
@@ -144,7 +90,8 @@ function PaymentGateway() {
                                 type="text"
                                 placeholder="Numero de Tarjeta"
                                 value={cardNumber}
-                                onChange={(e) => setCardNumber(e.target.value)}
+                                maxLength={16}
+                                onChange={handleCardNumberChange}
                               />
                             </Form.Group>
                             <Form.Group>
@@ -153,7 +100,8 @@ function PaymentGateway() {
                                 type="text"
                                 placeholder="MM/YY"
                                 value={expirationDate}
-                                onChange={(e) => setExpirationDate(e.target.value)}
+                                maxLength={5}
+                                onChange={handleExpirationDateChange}
                               />
                             </Form.Group>
                             <Form.Group>
@@ -162,12 +110,23 @@ function PaymentGateway() {
                                 type="text"
                                 placeholder="Codigo de Seguridad"
                                 value={securityCode}
-                                onChange={(e) => setSecurityCode(e.target.value)}
+                                maxLength={3}
+                                onChange={handleSecurityCodeChange}
                               />
                             </Form.Group>
                           </Form>
-                          <Button className="mt-4" onClick={handlePayment}>Pay</Button>
-                          {submitForm && <p className="exito">Form submitted successfully</p>}
+                          <Button className="mt-4" onClick={handlePayment}>
+                            Pay
+                          </Button>
+                          {submitForm ? (
+                            <p className="exito">
+                              Formulario enviado exitosamente
+                            </p>
+                          ) : (
+                            validationError && (
+                              <p className="error-message">{validationError}</p>
+                            )
+                          )}
                         </div>
                       </div>
                     </div>
@@ -176,9 +135,9 @@ function PaymentGateway() {
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </div>
-    </div>
+    </>
   );
 }
 
