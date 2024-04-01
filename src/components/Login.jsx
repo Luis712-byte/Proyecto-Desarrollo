@@ -37,12 +37,11 @@ function LoginForm() {
 
     if (user) {
       alert(`Bienvenido ${user.name}`);
-      navigate("/")
+      navigate("/");
       handleLoginSuccess(user);
+      localStorage.setItem("loggedInUserEmail", user.email);
     } else {
-      setError(
-        "Email/ID o contraseña incorrectos."
-      );
+      setError("Email/ID o contraseña incorrectos.");
     }
   };
 

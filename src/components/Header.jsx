@@ -24,15 +24,25 @@ export function NavBar({ usuario }) {
   };
 
   useEffect(() => {
-    setUser(null);
-    const userDataList = JSON.parse(localStorage.getItem("userDataList")) || [];
-    const loggedInUser = userDataList.length > 0 ? userDataList[0] : null;
-    setUser(loggedInUser);
+    const loggedInUserEmail = localStorage.getItem("loggedInUserEmail");
+    if (loggedInUserEmail) {
+      const userDataList =
+        JSON.parse(localStorage.getItem("userDataList")) || [];
+      const loggedInUser = userDataList.find(
+        (user) => user.email === loggedInUserEmail
+      );
+      if (loggedInUser) {
+        setUser(loggedInUser);
+      } else {
+        localStorage.removeItem("loggedInUserEmail");
+      }
+    }
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("userDataList");
+    localStorage.removeItem("loggedInUserEmail");
     setUser(null);
+    console.log("Se fue");
   };
 
   return (
@@ -48,7 +58,9 @@ export function NavBar({ usuario }) {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item onClick={handleLogout}>Cerrar sesión</Dropdown.Item>
+                  <Dropdown.Item onClick={handleLogout}>
+                    Cerrar sesión
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             ) : (

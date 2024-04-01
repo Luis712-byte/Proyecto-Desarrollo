@@ -40,7 +40,7 @@ export function Cart() {
 
   const handleConfirmCart = () => {
     if (cart.length > 0) {
-      const isAuthenticated = !!localStorage.getItem("userDataList");
+      const isAuthenticated = !!localStorage.getItem("loggedInUserEmail");
       if (isAuthenticated) {
         navigate("/Pago");
       } else {
