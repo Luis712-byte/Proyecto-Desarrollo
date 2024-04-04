@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import RegistroForm from "./Registro";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FaKey } from "react-icons/fa";
+import { FaHouse } from "react-icons/fa6";
 
 function LoginForm() {
   const [emailOrId, setEmailOrId] = useState("");
@@ -46,82 +46,89 @@ function LoginForm() {
   };
 
   return (
-    <div>
+    <>
       <div className="Title-container">
         <Link to="/*">
           <button>
             {" "}
-            <FontAwesomeIcon icon={faArrowLeft} />{" "}
+            <FaHouse />{" "}
           </button>
         </Link>
-
-        <div className="element2">
-          <h1>Formulario De Ingreso</h1>
+      </div>
+      <div className="background-image">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-sm-6">
+              {isRegistering ? (
+                <RegistroForm onRegister={handleLoginSuccess} />
+              ) : (
+                <div className="form-box">
+                  <div className="form-top">
+                    <div className="form-top-left">
+                      <h3>Login to our site</h3>
+                      <p>Enter email and password to log on:</p>
+                    </div>
+                    <div className="form-top-right">
+                      <FaKey className="i" />
+                    </div>
+                  </div>
+                  <div className="form-bottom">
+                    <form
+                      className={`bg-white shadow-md rounded px-8 py-8`}
+                      onSubmit={handleSubmit}
+                    >
+                      <div className="form-group">
+                        <label className="sr-only" htmlFor="form-username">
+                          Username
+                        </label>
+                        <input
+                          type="text"
+                          value={emailOrId}
+                          onChange={(e) => setEmailOrId(e.target.value)}
+                          required
+                          placeholder="tuemail@example.com"
+                          className="form-username form-control"
+                          id="form-username"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label className="sr-only" htmlFor="form-password">
+                          Password
+                        </label>
+                        <input
+                          type="password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
+                          placeholder="Tu contraseña"
+                          className="form-password form-control"
+                          id="form-password"
+                        />
+                      </div>
+                      <button type="submit" className="btn mt-2">
+                        Sign in!
+                      </button>
+                      {error && (
+                        <p className="text-red-500 text-center">{error}</p>
+                      )}
+                      <p className="text-center mt-2">
+                        ¿No tienes cuenta?{" "}
+                        <Link
+                          onClick={toggleForm}
+                          className="text-blue-500 hover:underline cursor-pointer"
+                        >
+                          Regístrate aquí
+                        </Link>
+                      </p>
+                    </form>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        {isRegistering ? (
-          <RegistroForm onRegister={handleLoginSuccess} />
-        ) : (
-          <form
-            className={`bg-white shadow-md rounded px-8 py-8`}
-            onSubmit={handleSubmit}
-          >
-            <h1 className="text-2xl font-semibold mb-4 text-center">Login</h1>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="email"
-              >
-                Email o ID:
-              </label>
-              <input
-                id="email"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                value={emailOrId}
-                onChange={(e) => setEmailOrId(e.target.value)}
-                required
-                placeholder="tuemail@example.com o ID"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="password"
-              >
-                Contraseña:
-              </label>
-              <input
-                id="password"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                placeholder="Tu contraseña"
-              />
-            </div>
-            <button
-              className="bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-              type="submit"
-            >
-              Iniciar Sesión
-            </button>
-            <p className="text-center mt-4">
-              ¿No tienes cuenta?{" "}
-              <Link
-                onClick={toggleForm}
-                className="text-blue-500 hover:underline cursor-pointer"
-              >
-                Regístrate aquí
-              </Link>
-            </p>
-            {error && <p className="text-red-500 text-center">{error}</p>}
-          </form>
-        )}
-      </div>
-    </div>
+    </>
   );
 }
 

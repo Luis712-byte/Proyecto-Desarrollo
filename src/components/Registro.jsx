@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { FaPencilAlt } from "react-icons/fa";
 
 function RegistroForm({ onRegister }) {
   const [name, setName] = useState("");
@@ -51,99 +52,100 @@ function RegistroForm({ onRegister }) {
     setPassword("");
   }
 
+
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      {isRegistered ? (
-        <div className="text-center">
-          <h1 className="text-2xl font-semibold mb-4">¡Registro exitoso!</h1>
-          <p className="text-gray-700 mb-4">
-            Ahora puedes iniciar sesión con tu correo electrónico y contraseña.
-          </p>
-          <Link to="/">
-            <button className="bg-primary text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline w-full mt-4">
-              Ir al inicio de sesión
-            </button>
-          </Link>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-sm-12">
+          {isRegistered ? (
+            <div className="text-registro">
+              <h1 className="text-2xl font-semibold mb-4">
+                ¡Registro exitoso!
+              </h1>
+              <p className="text-gray-700 mb-4">
+                Ahora puedes iniciar sesión con tu correo electrónico y
+                contraseña.
+              </p>
+
+              <Link to="/">
+                <button className="bg-primary text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline w-full mt-4">
+                  Ir al inicio de sesión
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <div className="form-box">
+              <div className="form-top">
+                <div className="form-top-left">
+                  <h3>Sign up now</h3>
+                  <p>Fill in the form below to get instant access:</p>
+                </div>
+                <div className="form-top-right">
+                  <FaPencilAlt className="fa fa-pencil" />
+                </div>
+              </div>
+              <div className="form-bottom">
+                <form
+                  className="bg-white shadow-md rounded px-8 py-8 w-full max-w-md"
+                  onSubmit={handleSubmit}
+                >
+                  <div className="form-group">
+                    <label className="sr-only" htmlFor="form-first-name">
+                      First name
+                    </label>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                      placeholder="First name..."
+                      className="form-first-name form-control"
+                      id="form-first-name"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="sr-only" htmlFor="form-last-name">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      placeholder="Email..."
+                      className="form-last-name form-control"
+                      id="form-last-name"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="sr-only" htmlFor="form-email">
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      placeholder="Password..."
+                      className="form-email form-control"
+                      id="form-email"
+                    />
+                  </div>
+                  <button type="submit" className="btn mt-2">
+                    Sign me up!
+                  </button>
+                  <p className="text-center mt-2">
+                    ¿Ya tienes una cuenta?{" "}
+                    <Link to="/">Logueate aquí</Link>
+                  </p>
+                  {error && (
+                    <p className="mt-2 text-red-500 text-center">{error}</p>
+                  )}
+                </form>
+              </div>
+            </div>
+          )}
         </div>
-      ) : (
-        <form
-          className="bg-white shadow-md rounded px-8 py-8 w-full max-w-md"
-          onSubmit={handleSubmit}
-        >
-          <h1 className="text-2xl font-semibold mb-4 text-center">Registro</h1>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="nombre"
-                  >
-                    Nombre:
-                  </label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    id="nombre"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="email"
-                  >
-                    Correo Electrónico:
-                  </label>
-                </td>
-                <td>
-                  <input
-                    type="email"
-                    id="email"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="password"
-                  >
-                    Contraseña:
-                  </label>
-                </td>
-                <td>
-                  <input
-                    type="password"
-                    id="password"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <button
-            type="submit"
-            className="bg-primary text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline w-full mt-4"
-          >
-            Registrarse
-          </button>
-          {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
-        </form>
-      )}
+      </div>
     </div>
   );
 }
