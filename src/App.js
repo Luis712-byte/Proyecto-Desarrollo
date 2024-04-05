@@ -8,6 +8,7 @@ import Carrito from "./components/Carrito";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PaymentGateway from "./components/PaymentGateway";
 import Pay from "./components/Pay";
+import Account from "./components/Account.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/Carrito" element={<Carrito />} />
       <Route path="/Pago" element={<PaymentGateway />} />
       <Route path="/Pay" element={<Pay />} />
+      <Route path="/Account" element={<Account />} />
     </Routes>
   );
 }

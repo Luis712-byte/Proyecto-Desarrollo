@@ -1,4 +1,3 @@
-
 import { useReducer, createContext } from 'react'
 import { cartReducer, cartInitialState } from '../reducers/cart.js'
 
@@ -19,24 +18,30 @@ function useCartReducer () {
     });
   }
   
+  const decreaseQuantity = productId => {
+    dispatch({
+      type: 'DECREASE_QUANTITY',
+      payload: productId
+    });
+  }
+
   const clearCart = () => {
     dispatch({ type: 'CLEAR_CART' });
   }
   
 
-  return { state, addToCart, removeFromCart, clearCart }
+  return { state, addToCart, removeFromCart, decreaseQuantity, clearCart }
 }
 
-// la dependencia de usar React Context
-// es MÍNIMA
 export function CartProvider ({ children }) {
-  const { state, addToCart, removeFromCart, clearCart } = useCartReducer()
+  const { state, addToCart, removeFromCart, decreaseQuantity, clearCart } = useCartReducer()
 
   return (
     <CartContext.Provider value={{
       cart: state,
       addToCart,
       removeFromCart,
+      decreaseQuantity,
       clearCart
     }}
     >

@@ -10,16 +10,14 @@ function PaymentGateway() {
   const [submitForm, setSubmitForm] = useState(false);
   const [validationError, setValidationError] = useState("");
 
-
   const navigate = useNavigate();
-
 
   const handlePayment = () => {
     const isValid = validateCardData();
     if (isValid) {
       setSubmitForm(true);
       alert("Compra Exitosa");
-      navigate("/")
+      navigate("/");
     } else {
       setValidationError("Por favor ingrese datos válidos.");
     }

@@ -1273,3 +1273,47 @@ img {
   padding: 20px;
   border-radius: 5px;
 }
+.user-details input{
+  width: 55%;
+}
+.user-details li{
+  cursor: pointer;
+}
+.user-details-container {
+  display: flex;
+}
+
+.user-details-column {
+  flex: 1;
+}
+
+.user-details {
+  margin: 10px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  margin-bottom: 5px;
+}
+.user-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-avatar img {
+  max-width: 30%;
+  max-height: 50%;
+  display: block;
+}
+.filters-container{
+  border-radius: 50px;
+}
+.category-select{
+  border: 1px solid black;
+}
+

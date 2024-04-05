@@ -3,11 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../hooks/useCart.js";
 import { Container } from "react-bootstrap";
 import { ClearCartIcon } from "./Icons.jsx";
+import { CartContext } from "../context/cart.jsx";
 
-function CartItem({ product, addToCart, removeFromCart }) {
+function CartItem({ product, addToCart }) {
+  const { removeFromCart, decreaseQuantity } = React.useContext(CartContext);
+
   const handleRemoveFromCart = () => {
     removeFromCart(product);
+    window.location.reload();
   };
+  const handledecreaseFromCart = () => {
+    decreaseQuantity(product);
+    window.location.reload();
+  };
+  console.log(CartItem);
 
   return (
     <div className="cart-products">
@@ -16,7 +25,17 @@ function CartItem({ product, addToCart, removeFromCart }) {
         <h3>{product.title}</h3>
         <p>Talla: {product.size}</p>
         <p>Precio: ${product.price}</p>
-        <small>Cantidad: {product.quantity}</small>
+        <small>
+          {" "}
+          Cantidad:{" "}
+          <button
+            className="btn btn-primary"
+            onClick={() => handledecreaseFromCart(product.id)}
+          >
+            -
+          </button>
+          {product.quantity}
+        </small>
         <button className="btn btn-primary" onClick={() => addToCart(product)}>
           +
         </button>
@@ -43,12 +62,18 @@ export function Cart() {
       const isAuthenticated = !!localStorage.getItem("loggedInUserEmail");
       if (isAuthenticated) {
         navigate("/Pago");
+        window.location.reload();
       } else {
         navigate("/Login");
       }
     } else {
       alert("No hay productos en el carrito de compra.");
     }
+  };
+
+  const handleClearCart = () => {
+    clearCart();
+    window.location.reload();
   };
 
   return (
@@ -78,7 +103,7 @@ export function Cart() {
             </button>
           </div>
           <div className="buttom-clear">
-            <button className="btn btn-danger" onClick={clearCart}>
+            <button className="btn btn-danger" onClick={handleClearCart}>
               <ClearCartIcon />
             </button>
           </div>

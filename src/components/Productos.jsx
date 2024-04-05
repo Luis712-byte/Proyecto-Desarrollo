@@ -9,6 +9,11 @@ export function Products({ products }) {
     return cart.some((item) => item.id === product.id);
   };
 
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    window.location.reload();
+  };
+
   return (
     <main className="products">
       <ul className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -28,7 +33,7 @@ export function Products({ products }) {
                     isProductInCart ? 'bg-danger' : 'bg-primary'
                   } text-white py-2 px-4 rounded`}
                   onClick={() => {
-                    isProductInCart ? removeFromCart(product) : addToCart(product);
+                    isProductInCart ? removeFromCart(product) : handleAddToCart(product);
                   }}
                 >
                   {isProductInCart ? <RemoveFromCartIcon /> : <AddToCartIcon />}

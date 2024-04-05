@@ -42,25 +42,33 @@ export function NavBar({ usuario }) {
   const handleLogout = () => {
     localStorage.removeItem("loggedInUserEmail");
     setUser(null);
+    navigate("/");
     console.log("Se fue");
+  };
+  const handleAccount = () => {
+    navigate("/Account");
   };
 
   return (
     <div className="header">
       <div className="header-part1">
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar bg="primary" variant="light" expand="lg">
           <Container>
-            <p className="m-0">Welcome to FashionCode</p>
+            <h5 className="m-0">Welcome to FashionCode</h5>
             {user ? (
               <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <Dropdown.Toggle variant="dark" id="dropdown-basic">
                   ¡Hola, {user.name}!
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
+                <Dropdown.Item onClick={handleAccount}>
+                    Mi Cuenta
+                  </Dropdown.Item>
                   <Dropdown.Item onClick={handleLogout}>
                     Cerrar sesión
                   </Dropdown.Item>
+                  
                 </Dropdown.Menu>
               </Dropdown>
             ) : (
@@ -106,7 +114,7 @@ export function NavBar({ usuario }) {
             <FontAwesomeIcon
               icon={faCartShopping}
               onClick={handleCarrito}
-              className="cart-icon bg-dark"
+              className="cart-icon bg-primary"
               style={{
                 fontSize: "24px",
                 borderRadius: "50px",
