@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import Swal from "sweetalert2";
 import { FaPencilAlt } from "react-icons/fa";
 
 function RegistroForm({ onRegister }) {
@@ -10,6 +11,7 @@ function RegistroForm({ onRegister }) {
   const [password, setPassword] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
   const [isUserAlreadyRegistered, setIsUserAlreadyRegistered] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userDataList = JSON.parse(localStorage.getItem("userDataList"));
@@ -40,7 +42,15 @@ function RegistroForm({ onRegister }) {
       const updatedUserDataList = [...userDataList, newUser];
       localStorage.setItem("userDataList", JSON.stringify(updatedUserDataList));
       onRegister(name);
-      alert("¡El usuario ha sido registrado exitosamente!");
+      Swal.fire({
+        title: "¡El usuario ha sido registrado exitosamente!",
+        icon: "success",
+        confirmButtonText: "Ok",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/");
+        }
+      });
       Clear();
       setIsRegistered(true);
     }
@@ -51,7 +61,6 @@ function RegistroForm({ onRegister }) {
     setEmail("");
     setPassword("");
   }
-
 
   return (
     <div className="container">
@@ -134,8 +143,7 @@ function RegistroForm({ onRegister }) {
                     Sign me up!
                   </button>
                   <p className="text-center mt-2">
-                    ¿Ya tienes una cuenta?{" "}
-                    <Link to="/">Logueate aquí</Link>
+                    ¿Ya tienes una cuenta? <Link to="/">Logueate aquí</Link>
                   </p>
                   {error && (
                     <p className="mt-2 text-red-500 text-center">{error}</p>

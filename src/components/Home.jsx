@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { NavBar } from "./Header.jsx";
 import { Cart } from "./Cart.jsx";
-import Card from "./Cartas-home.jsx";
+import Card from "../style/Cartas-home.jsx";
 import { Footer } from "./Footer.jsx";
-import SliderComponent from "./Slider.jsx";
+import SliderComponent from "../style/Slider.jsx";
 import { Container } from "react-bootstrap";
 
 const Home = () => {

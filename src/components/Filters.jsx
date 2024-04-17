@@ -1,7 +1,7 @@
 import React from "react";
 import { useId } from "react";
 import { useFilters } from "../hooks/useFilters.js";
-import {Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 export function Filters() {
   const { filters, setFilters } = useFilters();
@@ -23,12 +23,26 @@ export function Filters() {
     }));
   };
 
+  const handleSearchByName = (event) => {
+    const name = event.target.value;
+    setFilters((prevState) => ({
+      ...prevState,
+      name: name
+    }));
+  };
+  
   return (
     <Container>
-      <div className="titulo-filtro">
-        <h1 className="text-center">Productos E-commerce</h1>
-      </div>
-      <section className="filters-container bg-dark text-white">
+      <section className="filters-container text-center bg-dark text-white">
+        <div>
+          <label htmlFor="searchByName">Buscar por nombre: </label>
+          <input
+            type="text"
+            id="searchByName"
+            onChange={handleSearchByName}
+            value={filters.name}
+          />
+        </div>
         <div>
           <label htmlFor={minPriceFilterId}>Precio a partir de: </label>
           <input

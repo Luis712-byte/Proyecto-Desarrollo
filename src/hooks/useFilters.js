@@ -1,5 +1,5 @@
-import { useContext } from 'react'
-import { FiltersContext } from '../context/filters.jsx'
+import { useContext } from "react";
+import { FiltersContext } from "../context/filters.jsx";
 
 export function useFilters () {
   const { filters, setFilters } = useContext(FiltersContext)
@@ -11,7 +11,8 @@ export function useFilters () {
         (
           filters.category === 'all' ||
           product.category === filters.category
-        )
+        ) &&
+        (!filters.name || product.title.toLowerCase().includes(filters.name.toLowerCase()))
       )
     })
   }

@@ -13,6 +13,10 @@ export function Products({ products }) {
     addToCart(product);
     window.location.reload();
   };
+  const handleremove = (product) => {
+    removeFromCart(product);
+    window.location.reload();
+  };
 
   return (
     <main className="products">
@@ -33,7 +37,7 @@ export function Products({ products }) {
                     isProductInCart ? 'bg-danger' : 'bg-primary'
                   } text-white py-2 px-4 rounded`}
                   onClick={() => {
-                    isProductInCart ? removeFromCart(product) : handleAddToCart(product);
+                    isProductInCart ? handleremove(product) : handleAddToCart(product);
                   }}
                 >
                   {isProductInCart ? <RemoveFromCartIcon /> : <AddToCartIcon />}

@@ -34,6 +34,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+hr {
+  border: none;
+  height: 2px; 
+  background-color: #3498db; 
+  margin: 30px 0;
+  opacity: 0.5; 
+}
 
 .header-part1 {
   flex-grow: 1;
@@ -82,7 +89,11 @@ code {
   padding: 20px;
   text-align: center;
 }
-
+#searchByName {
+  color: #000000;
+  padding: 2px;
+  border-radius: 5px;
+}
 .cart-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1267,16 +1278,16 @@ img {
   width: 100%;
   padding: 0 15px;
 }
-.text-registro{
+.text-registro {
   text-align: center;
   background-color: white;
   padding: 20px;
   border-radius: 5px;
 }
-.user-details input{
+.user-details input {
   width: 55%;
 }
-.user-details li{
+.user-details li {
   cursor: pointer;
 }
 .user-details-container {
@@ -1310,10 +1321,9 @@ img {
   max-height: 50%;
   display: block;
 }
-.filters-container{
+.filters-container {
   border-radius: 50px;
 }
-.category-select{
+.category-select {
   border: 1px solid black;
 }
-

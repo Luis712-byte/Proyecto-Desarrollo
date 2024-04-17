@@ -1,12 +1,12 @@
 import React from "react";
 import Home from "./components/Home";
-import Productos from "./components/Vista-Producto.jsx";
+import Productos from "./style/Vista-Producto.jsx";
 import Login from "./components/Login";
 import Contacto from "./components/Contacto";
 import Blog from "./components/blog";
 import Carrito from "./components/Carrito";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import PaymentGateway from "./components/PaymentGateway";
+import PaymentGateway from "./style/PaymentGateway";
 import Pay from "./components/Pay";
 import Account from "./components/Account.jsx";
 

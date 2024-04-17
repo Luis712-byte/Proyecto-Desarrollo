@@ -5,7 +5,7 @@ import {
   faXTwitter,
   faInstagram,
   faPinterest,
-} from "@fortawesome/free-brands-svg-icons"; // Import the appropriate icons from 'free-brands-svg-icons'
+} from "@fortawesome/free-brands-svg-icons";
 import { Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 

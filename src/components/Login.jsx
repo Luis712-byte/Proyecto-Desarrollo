@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import RegistroForm from "./Registro";
 import { FaKey } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
+import Swal from "sweetalert2";
 
 function LoginForm() {
   const [emailOrId, setEmailOrId] = useState("");
@@ -36,10 +37,17 @@ function LoginForm() {
     );
 
     if (user) {
-      alert(`Bienvenido ${user.name}`);
-      navigate("/");
-      handleLoginSuccess(user);
-      localStorage.setItem("loggedInUserEmail", user.email);
+      Swal.fire({
+        title: `Bienvenido ${user.name}`,
+        icon: "success",
+        confirmButtonText: "Ok",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/");
+          handleLoginSuccess(user);
+          localStorage.setItem("loggedInUserEmail", user.email);
+        }
+      });
     } else {
       setError("Email/ID o contraseña incorrectos.");
     }

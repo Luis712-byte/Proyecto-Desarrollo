@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import { useCart } from "../hooks/useCart";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ContactInformation = () => {
   const { cart } = useCart();
@@ -34,8 +35,15 @@ const ContactInformation = () => {
       alert("Digite todos los campos");
     } else {
       setSubmitForm(true);
-      navigate("/pay");
-      alert("Informacion Guardada");
+      Swal.fire({
+        title: "Informacion Guardada",
+        icon: "success",
+        confirmButtonText: "Ok",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/pay");
+        }
+      });
     }
   };
 

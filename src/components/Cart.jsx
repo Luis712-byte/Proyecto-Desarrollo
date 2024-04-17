@@ -4,6 +4,7 @@ import { useCart } from "../hooks/useCart.js";
 import { Container } from "react-bootstrap";
 import { ClearCartIcon } from "./Icons.jsx";
 import { CartContext } from "../context/cart.jsx";
+import Swal from "sweetalert2";
 
 function CartItem({ product, addToCart }) {
   const { removeFromCart, decreaseQuantity } = React.useContext(CartContext);
@@ -67,18 +68,40 @@ export function Cart() {
         navigate("/Login");
       }
     } else {
-      alert("No hay productos en el carrito de compra.");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No hay productos en el carrito de compra",
+      });
     }
   };
 
   const handleClearCart = () => {
-    clearCart();
-    window.location.reload();
+    if (cart.length > 0) {
+      Swal.fire({
+        title: "Se fue...",
+        text: "¡Productos eliminados del carrito!",
+        icon: "success",
+        confirmButtonText: "Ok",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          clearCart();
+          window.location.reload();
+        }
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No hay productos en el carrito de compra",
+      });
+    }
   };
 
   return (
     <Container>
       <h1 className="text-center">PRODUCTOS DEL CARRITO</h1>
+      <hr></hr>
       <div className="cart-container">
         {cart.map((product) => (
           <div className="cart-item mb-3" key={product.id}>

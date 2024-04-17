@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Container, Col } from "react-bootstrap";
 import { CartIcon } from "./Icons";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function PaymentGateway() {
   const [cardNumber, setCardNumber] = useState("");
@@ -16,8 +17,15 @@ function PaymentGateway() {
     const isValid = validateCardData();
     if (isValid) {
       setSubmitForm(true);
-      alert("Compra Exitosa");
-      navigate("/");
+      Swal.fire({
+        title: "Compra Exitosa",
+        icon: "success",
+        confirmButtonText: "Ok",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/");
+        }
+      });
     } else {
       setValidationError("Por favor ingrese datos válidos.");
     }

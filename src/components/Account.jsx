@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "./Header";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Account = () => {
   const [showIcon, setShowIcon] = useState(false);
@@ -55,32 +56,50 @@ const Account = () => {
 
   const guardarCambios = () => {
     localStorage.setItem("userDataList", JSON.stringify([userData]));
-    alert("¡Tus cambios han sido guardados!");
-    navigate("/");
+    Swal.fire({
+      title: "¡Tus cambios han sido guardados!",
+      icon: "success",
+      confirmButtonText: "Ok",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/");
+      }
+    });
   };
 
   function Eliminar() {
-    const confirmDelete = window.confirm(
-      "¿Estás seguro de que quieres eliminar tu cuenta?"
-    );
-    if (confirmDelete) {
-      localStorage.removeItem("userDataList");
-      setUserData({
-        name: "",
-        email: "",
-        password: "",
-      });
-      alert("¡Tu cuenta ha sido eliminada!");
-      navigate("/");
-    } else {
-      navigate("/Account");
-    }
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("userDataList");
+        setUserData({
+          name: "",
+          email: "",
+          password: "",
+        });
+        Swal.fire({
+          title: "¡Tu cuenta ha sido eliminada!",
+          icon: "success",
+          confirmButtonText: "Ok",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate("/");
+          }
+        });
+      } else if (result.isDenied) {
+        navigate("/Account");
+      }
+    });
   }
 
   let Perfil = () => {
     navigate("/Account");
   };
-
 
   return (
     <>
