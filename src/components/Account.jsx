@@ -72,8 +72,8 @@ const Account = () => {
       title: "Do you want to save the changes?",
       showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: "Save",
-      denyButtonText: `Don't save`,
+      confirmButtonText: "Delete",
+      denyButtonText: `Don't Delete`,
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem("userDataList");
@@ -230,7 +230,7 @@ const Account = () => {
                       />
                     </p>
                     <p>
-                      <span>Codigo Postal: </span>
+                      <span>C.Postal: </span>
                       <input
                         type="text"
                         name="codigoPostal"
