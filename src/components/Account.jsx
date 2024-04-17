@@ -19,10 +19,8 @@ const Account = () => {
     name: "",
     dirrecion: "",
     edad: "",
-    region: "",
     apellido: "",
     email: "",
-    localizacion: "",
     codigoPostal: "",
   });
 
@@ -55,16 +53,34 @@ const Account = () => {
   };
 
   const guardarCambios = () => {
-    localStorage.setItem("userDataList", JSON.stringify([userData]));
-    Swal.fire({
-      title: "¡Tus cambios han sido guardados!",
-      icon: "success",
-      confirmButtonText: "Ok",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate("/");
-      }
-    });
+    const { dirrecion, apellido, edad, codigoPostal } = userData;
+    if (
+      dirrecion &&
+      apellido &&
+      edad &&
+      codigoPostal &&
+      dirrecion.trim() !== "" &&
+      apellido.trim() !== "" &&
+      edad.trim() !== "" &&
+      codigoPostal.trim() !== ""
+    ) {
+      localStorage.setItem("userDataList", JSON.stringify([userData]));
+      Swal.fire({
+        title: "¡Tus cambios han sido guardados!",
+        icon: "success",
+        confirmButtonText: "Ok",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/");
+        }
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor, completa todos los campos antes de guardar los cambios.",
+      });
+    }
   };
 
   function Eliminar() {
@@ -181,15 +197,6 @@ const Account = () => {
                         onChange={handleInputChange}
                       />
                     </p>
-                    <p>
-                      <span>Region: </span>
-                      <input
-                        type="text"
-                        name="region"
-                        value={userData.region}
-                        onChange={handleInputChange}
-                      />
-                    </p>
                     <div className="button-group">
                       <button
                         className="btn btn-primary"
@@ -217,15 +224,6 @@ const Account = () => {
                         type="number"
                         name="edad"
                         value={userData.edad}
-                        onChange={handleInputChange}
-                      />
-                    </p>
-                    <p>
-                      <span>Localizacion: </span>
-                      <input
-                        type="text"
-                        name="localizacion"
-                        value={userData.localizacion}
                         onChange={handleInputChange}
                       />
                     </p>

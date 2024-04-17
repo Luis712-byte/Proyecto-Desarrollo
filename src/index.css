@@ -1285,7 +1285,9 @@ img {
   border-radius: 5px;
 }
 .user-details input {
-  width: 50%;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 52%;
 }
 .user-details li {
   cursor: pointer;
