@@ -5,23 +5,22 @@ import "slick-carousel/slick/slick-theme.css";
 
 const SliderComponent = () => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    width: "30%",
-  };
-
-  const slideStyle = {
-    display: "flex",
-    alignItems: "center",
+    autoplay: true,
+    autoplaySpeed: 1500,
+    draggable: false, 
+    swipe: false, 
+    touchMove: false,
   };
 
   return (
     <Slider {...settings}>
       <div>
-        <div style={slideStyle}>
+        <div className="slider">
           <img
             src="https://3.bp.blogspot.com/-uRRCfYYsGR4/VEwMXrZw8DI/AAAAAAAAATo/7vHC7sxDVW8/s1600/moda2014.jpg"
             alt="Imagen"
