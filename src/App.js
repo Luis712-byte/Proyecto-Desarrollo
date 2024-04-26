@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PaymentGateway from "./style/PaymentGateway";
 import Pay from "./components/Pay";
 import Account from "./components/Account.jsx";
+import Productdetail from "./components/Productdetail.jsx";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/Pago" element={<PaymentGateway />} />
       <Route path="/Pay" element={<Pay />} />
       <Route path="/Account" element={<Account />} />
+      <Route path="/detail/:id" element={<Productdetail />} />
     </Routes>
   );
 }
