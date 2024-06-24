@@ -29,7 +29,7 @@ function ProductDetail() {
     addToCart(product);
     Swal.fire({
       title: "Producto Agregado",
-      text: "El producto fue eliminado correctamente.",
+      text: "El producto fue agregado correctamente.",
       icon: "success",
       confirmButtonText: "Aceptar",
     }).then((result) => {
