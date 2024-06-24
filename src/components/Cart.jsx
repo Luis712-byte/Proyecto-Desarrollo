@@ -11,7 +11,16 @@ function CartItem({ product, addToCart }) {
 
   const handleRemoveFromCart = () => {
     removeFromCart(product);
-    window.location.reload();
+    Swal.fire({
+      title: 'Producto eliminado',
+      text: 'El producto fue eliminado correctamente.',
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    });
   };
   const handledecreaseFromCart = () => {
     decreaseQuantity(product);
@@ -22,7 +31,11 @@ function CartItem({ product, addToCart }) {
   return (
     <div className="cart-products">
       <div className="cart-info">
-        <img src={product.image} alt={product.title} />
+        <img
+          src={product.image}
+          alt={product.title}
+          className="product-image"
+        />
         <h3>{product.title}</h3>
         <p>Talla: {product.size}</p>
         <p>Precio: ${product.price}</p>

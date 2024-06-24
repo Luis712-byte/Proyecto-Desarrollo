@@ -36,10 +36,10 @@ code {
 }
 hr {
   border: none;
-  height: 2px; 
-  background-color: #3498db; 
+  height: 2px;
+  background-color: #3498db;
   margin: 30px 0;
-  opacity: 0.5; 
+  opacity: 0.5;
 }
 
 .header-part1 {
@@ -67,22 +67,21 @@ hr {
 }
 
 .card img {
-  width: 500px; /* Ancho deseado en píxeles */
+  width: 500px;
   height: 300px;
 }
 
-/* CSS para estilizar el botón de la tarjeta */
 .button-style {
-  background-color: #0074d9; /* Color de fondo del botón */
-  color: #fff; /* Color del texto del botón */
-  padding: 10px 20px; /* Relleno del botón */
-  border: none; /* Elimina el borde */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  background-color: #0074d9;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .button-style:hover {
-  background-color: #0056b3; /* Color de fondo cuando se pasa el cursor sobre el botón */
+  background-color: #0056b3;
 }
 
 .Home-Promo {
@@ -188,7 +187,7 @@ hr {
   object-fit: cover;
   background: #fff;
 }
-/* Estilos para el encabezado fijo */
+
 .fixed {
   position: fixed;
   top: 0;
@@ -197,85 +196,73 @@ hr {
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  /* Añade más estilos según tus preferencias */
 }
-/* Estilos personalizados para el encabezado */
+
 .fixed {
   background-color: #fff;
-  color: black; /* Cambiar el color de fondo a un gris oscuro */
+  color: black;
 }
 
 .fixed img {
-  height: 5rem; /* Cambiar el color del texto a blanco */
+  height: 5rem;
 }
 
-/* Estilos para centrar la sección de filtros */
 .filters-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f5f5f5; /* Cambia el color de fondo a tu elección */
-  padding: 20px; /* Ajusta el espacio alrededor de la sección */
+  background-color: #f5f5f5;
+  padding: 20px;
 }
 
-/* Estilos para los elementos dentro de la sección de filtros */
 .filter {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 20px; /* Espacio entre los elementos */
+  margin-bottom: 20px;
 }
 
-/* Estilos para resaltar la categoría seleccionada */
 .category-select {
   border: 2px solid transparent;
   border-radius: 5px;
   padding: 5px;
 }
 
-/* Cambia el color de fondo y borde al seleccionar la categoría */
 .category-select:focus {
   border-color: black;
-  background-color: #f0f0f0; /* Cambia el color de fondo al seleccionar */
+  background-color: #f0f0f0;
 }
 
-/* Estilos generales del header para pantallas pequeñas */
 @media (max-width: 767px) {
-  /* Estilos para el contenedor del header */
   .fixed {
     position: relative;
-    z-index: 1000; /* Asegura que el header esté por encima del contenido */
+    z-index: 1000;
   }
 
-  /* Estilos para el botón del menú */
   .text-3xl {
     font-size: 24px;
   }
 
-  /* Estilos para el menú desplegable */
   .md:flex {
-    display: none; /* Oculta el menú desplegable por defecto */
+    display: none;
   }
 
-  /* Estilos para el botón de cerrar del menú */
   .md:hidden {
-    display: inline-block; /* Muestra el botón de cerrar del menú */
+    display: inline-block;
   }
 
-  /* Estilos para el título del sitio */
   .text-3xl.font-bold {
     font-size: 24px;
-    text-align: center; /* Centra el título del sitio en pantalla pequeña */
-    margin-top: 10px; /* Añade espacio arriba del título */
+    text-align: center;
+    margin-top: 10px;
   }
 
-  /* Estilos para el botón "Iniciar Sesión" */
   .text-black {
     color: black;
-    text-decoration: none; /* Quita la subraya del enlace */
-    margin-top: 10px; /* Añade espacio arriba del botón */
-    display: block; /* Hace que el botón ocupe todo el ancho disponible */
-    text-align: center; /* Centra el texto del botón */
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
   }
 }
 @media screen and (max-width: 600px) {
@@ -300,22 +287,21 @@ hr {
   }
 }
 
-/* Estilos para pantallas más grandes (opcional) */
 @media (min-width: 769px) {
   .responsive-div {
-    display: block; /* Asegura que el div sea visible en pantallas más grandes */
-    font-size: 16px; /* Cambiar el tamaño de fuente en pantallas más grandes si es necesario */
+    display: block;
+    font-size: 16px;
   }
 }
-/* Estilos para pantallas más pequeñas (móviles) */
+
 @media (max-width: 768px) {
   .ms-auto {
-    margin-left: auto; /* Alinea el elemento a la derecha en pantallas pequeñas */
+    margin-left: auto;
   }
 
   .cart-icon {
-    font-size: 24px; /* Cambiar el tamaño del icono en pantallas pequeñas */
-    margin-right: 10px; /* Añadir espacio a la derecha del icono */
+    font-size: 24px;
+    margin-right: 10px;
   }
 }
 a:hover {
@@ -1065,12 +1051,12 @@ h6 span {
   padding: 10px;
 }
 .Title-container button {
-  background-color: #1f2029; /* Color de fondo del botón */
+  background-color: #1f2029;
   color: white;
-  padding: 10px 20px; /* Relleno del botón */
-  border: none; /* Elimina el borde */
-  border-radius: 5px; /* Bordes redondeados */
-  /* Cambia el cursor al pasar sobre el botón */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+
   margin: 20px;
 }
 
@@ -1085,14 +1071,14 @@ h6 span {
 }
 @media (max-width: 768px) {
   .cart-container {
-    margin-top: 20px; /* Espacio entre el título y los elementos del carrito */
+    margin-top: 20px;
   }
   .cart-item {
     display: block;
   }
   .confirm-cart {
     display: block;
-    margin-top: 20px; /* Espacio entre los elementos del carrito y los botones de confirmación */
+    margin-top: 20px;
   }
 }
 
@@ -1265,9 +1251,9 @@ img {
   color: #333;
 }
 .background-image {
-  height: 90.9vh; /* Set the height to 100% of the viewport height */
+  height: 90.9vh;
   background-image: url("https://th.bing.com/th/id/R.55d00d5c67be2867ab8a43facdf04966?rik=%2fqyX1K4pbETkwA&pid=ImgRaw&r=0&sres=1&sresct=1");
-  background-size: cover; /* Ensure the background image covers the entire container */
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1334,23 +1320,40 @@ img {
   align-items: center;
   width: 100%;
 }
-.product-image{
-  max-width: 100%;
-  height: 20px;
+.product-image {
+  max-width: 200px;
+  max-height: 200px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
-/* Para dispositivos móviles */
-/* Para dispositivos móviles */
+.productdetail-image {
+  max-width: 300px;
+  max-height: 300px;
+  width: 100%;
+  height: auto;
+}
+.product-card {
+  transition: transform 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .product-card:hover {
+    transform: scale(1.15);
+  }
+}
+
 @media (max-width: 767px) {
   .button-container {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    margin-top: 10px; /* Puedes ajustar el margen según sea necesario */
+    margin-top: 10px;
   }
 
   .button-container .btn {
     width: 100%;
-    margin-bottom: 10px; /* Puedes ajustar el margen inferior según sea necesario */
+    margin-bottom: 10px;
   }
 
   .button-container button {
@@ -1359,4 +1362,3 @@ img {
     justify-content: center;
   }
 }
-

@@ -12,7 +12,7 @@ import 'bootswatch/dist/sandstone/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <FiltersProvider> {/* Aquí se envuelve la App con FiltersProvider */}
+    <FiltersProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
